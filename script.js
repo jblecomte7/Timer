@@ -18,9 +18,13 @@ let prevTime =
 let bestLap = prevTime;
 
 let startChrono = document.querySelector(".start__btn");
-let stopChrono = document.querySelector(".stop__btn");
+let stopChrono = document.querySelector("#stopBtn");
 let reinitChrono = document.querySelector(".reinit__btn");
 let checkpoint = document.querySelector("#lap");
+
+reinitChrono.disabled = true;
+stopChrono.disabled = true;
+checkpoint.disabled = true;
 
 // TIMER FUNCTION
 
@@ -71,7 +75,10 @@ startChrono.addEventListener("click", () => {
   chronoStart();
   startChrono.disabled = true;
   reinitChrono.disabled = true;
+  checkpoint.disabled = false;
   startChrono.textContent = "...";
+  stopChrono.disabled = false;
+  stopChrono.classList.add("stop__btn");
 });
 
 // STOP CHRONO (STOP button)
@@ -148,6 +155,9 @@ reinitChrono.addEventListener("click", () => {
   nbTour = 1;
   startChrono.disabled = false;
   startChrono.textContent = "START";
+  stopChrono.disabled = true;
+  stopChrono.classList.remove("stop__btn");
+  checkpoint.disabled = true;
 });
 
 const remove = () => {
