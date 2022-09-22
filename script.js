@@ -11,11 +11,11 @@ let millisecondsNb = 0;
 let time;
 let actualTime;
 let nbTour = 1;
+let currentLapTime;
 let checkLap = document.querySelector("#checkpointLap");
 let prevTime =
   hoursNb * 60 * 60 * 1000 + minutesNb * 60 * 1000 + secondsNb * 1000;
-
-console.log(prevTime);
+let bestLap = prevTime;
 
 let startChrono = document.querySelector(".start__btn");
 let stopChrono = document.querySelector(".stop__btn");
@@ -94,6 +94,13 @@ const addContent = () => {
     "</br>" +
     "<b>Temps total écoulé :</b> " +
     timer();
+  currentLapTime = actualTime - prevTime;
+  if (currentLapTime < bestLap || bestLap === 0) {
+    bestLap = currentLapTime;
+    addLap.style.background = "green";
+  } else {
+    addLap.style.background = "#fff";
+  }
   checkLap.prepend(addLap);
 };
 
