@@ -47,6 +47,7 @@ function timer() {
 
 const addContent = () => {
   let addLap = document.createElement("div");
+  addLap.className = "lap";
   addLap.textContent = "Temps écoulé : " + timer();
   checkLap.append(addLap);
 };
@@ -80,4 +81,11 @@ reinitChrono.addEventListener("click", () => {
   seconds.textContent = secondsNb;
   millisecondsNb = 0;
   milliseconds.textContent = millisecondsNb;
+
+  remove();
 });
+
+const remove = () => {
+  const removeCheckpoints = document.querySelector(".lap");
+  removeCheckpoints.remove();
+};

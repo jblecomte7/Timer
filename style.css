@@ -61,9 +61,14 @@ button {
 #checkpointLap {
     text-align: center;
     line-height: 2em;
-    background: #fff;
+    font-size : 1.25em;
     width: 300px;
     margin: 0 auto;
-    border-radius: 10px;
+}
 
+.lap {
+    border-radius: 10px;
+    background: #fff;
+    margin: 10px 0;
+    font-size: 0.75em;
 }
