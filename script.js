@@ -127,7 +127,10 @@ reinitChrono.addEventListener("click", () => {
   milliseconds.textContent = millisecondsNb;
 
   remove();
+  prevTime =
+    hoursNb * 60 * 60 * 1000 + minutesNb * 60 * 1000 + secondsNb * 1000;
   nbTour = 1;
+  console.log(dhm(actualTime - prevTime));
 });
 
 const remove = () => {
