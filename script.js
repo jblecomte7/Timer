@@ -148,4 +148,5 @@ const remove = () => {
   removeCheckpoints.forEach((line) => {
     line.remove();
   });
+  document.querySelector(".best_lap").remove();
 };
