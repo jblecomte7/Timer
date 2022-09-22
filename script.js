@@ -70,6 +70,8 @@ const chronoStart = () => {
 startChrono.addEventListener("click", () => {
   chronoStart();
   startChrono.disabled = true;
+  reinitChrono.disabled = true;
+  startChrono.textContent = "...";
 });
 
 // STOP CHRONO (STOP button)
@@ -80,6 +82,9 @@ const chronoStop = () => {
 
 stopChrono.addEventListener("click", () => {
   chronoStop();
+  reinitChrono.disabled = false;
+  startChrono.disabled = false;
+  startChrono.textContent = "RESUME";
 });
 
 // ADD CHECKPOINTS (LAP button)
@@ -116,7 +121,7 @@ function dhm(ms) {
   let sec = Math.floor(minutesms / 1000);
   let msms = ms % 1000;
   ms = Math.floor(minutesms);
-  return `${hours}h ${minutes}m ${sec}s ${msms}`;
+  return `${hours}h ${minutes}m ${sec}s ${msms}00ms`;
 }
 
 checkpoint.addEventListener("click", () => {
@@ -142,6 +147,7 @@ reinitChrono.addEventListener("click", () => {
     hoursNb * 60 * 60 * 1000 + minutesNb * 60 * 1000 + secondsNb * 1000;
   nbTour = 1;
   startChrono.disabled = false;
+  startChrono.textContent = "START";
 });
 
 const remove = () => {
