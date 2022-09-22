@@ -9,10 +9,12 @@ let secondsNb = 0;
 let millisecondsNb = 0;
 
 let time;
+let checkLap = document.querySelector("#checkpointLap");
 
 let startChrono = document.querySelector(".start__btn");
 let stopChrono = document.querySelector(".stop__btn");
 let reinitChrono = document.querySelector(".reinit__btn");
+let checkpoint = document.querySelector("#lap");
 
 function timer() {
   millisecondsNb++;
@@ -40,7 +42,14 @@ function timer() {
     secondsNb = 0;
     seconds.textContent = secondsNb;
   }
+  return `${hoursNb}h ${minutesNb}m ${secondsNb}s ${millisecondsNb}ms`;
 }
+
+const addContent = () => {
+  let addLap = document.createElement("div");
+  addLap.textContent = "Temps écoulé : " + timer();
+  checkLap.append(addLap);
+};
 
 const chronoStart = () => {
   time = setInterval(timer, 100);
@@ -56,6 +65,10 @@ startChrono.addEventListener("click", () => {
 
 stopChrono.addEventListener("click", () => {
   chronoStop();
+});
+
+checkpoint.addEventListener("click", () => {
+  addContent();
 });
 
 reinitChrono.addEventListener("click", () => {
