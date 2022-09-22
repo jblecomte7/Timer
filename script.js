@@ -16,6 +16,8 @@ let stopChrono = document.querySelector(".stop__btn");
 let reinitChrono = document.querySelector(".reinit__btn");
 let checkpoint = document.querySelector("#lap");
 
+// TIMER FUNCTION
+
 function timer() {
   millisecondsNb++;
   milliseconds.textContent = millisecondsNb;
@@ -42,9 +44,10 @@ function timer() {
     secondsNb = 0;
     seconds.textContent = secondsNb;
   }
-  return `${hoursNb}h ${minutesNb}m ${secondsNb}s ${millisecondsNb}ms`;
+  return `${hoursNb}h ${minutesNb}m ${secondsNb}s ${millisecondsNb}`;
 }
 
+//
 const addContent = () => {
   let addLap = document.createElement("div");
   addLap.className = "lap";
