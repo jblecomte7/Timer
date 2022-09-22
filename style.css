@@ -1,11 +1,15 @@
 body {
     margin: 0;
     background: rgb(216, 216, 216);
-    height: 50vh;
+    background-image: url('./images/bg-running.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
 }
 
 .timer {
-    margin: 100px auto;
+    margin: 10px auto;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -21,6 +25,7 @@ p {
     font-size: 2em;
     border-radius: 10px;
     padding: 0 25px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .buttons {
@@ -36,6 +41,7 @@ button {
     font-weight: bold;
     padding: 0 10px;
     margin: 25px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .start__btn {
@@ -79,6 +85,14 @@ button {
     font-size: 0.75em;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
+}
+
+h2 {
+    background: rgb(216, 216, 216);
+    padding: 15px;
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
 }
