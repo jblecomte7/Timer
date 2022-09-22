@@ -94,7 +94,7 @@ const addContent = () => {
     "</br>" +
     "<b>Temps total écoulé :</b> " +
     timer();
-  checkLap.append(addLap);
+  checkLap.prepend(addLap);
 };
 
 function dhm(ms) {
