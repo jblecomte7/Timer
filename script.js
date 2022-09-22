@@ -97,20 +97,23 @@ const addContent = () => {
   currentLapTime = actualTime - prevTime;
   if (currentLapTime < bestLap || bestLap === 0) {
     bestLap = currentLapTime;
-    addLap.style.background = "green";
-  } else {
-    addLap.style.background = "#fff";
+    const removeBestLap = document.querySelectorAll(".best_lap");
+    removeBestLap.forEach((line) => {
+      line.classList.remove("best_lap");
+      line.classList.add("lap");
+    });
+    addLap.className = "best_lap";
   }
   checkLap.prepend(addLap);
 };
 
 function dhm(ms) {
-  hours = Math.floor(ms / (60 * 60 * 1000));
-  hoursms = ms % (60 * 60 * 1000);
-  minutes = Math.floor(hoursms / (60 * 1000));
-  minutesms = ms % (60 * 1000);
-  sec = Math.floor(minutesms / 1000);
-  msms = ms % 1000;
+  let hours = Math.floor(ms / (60 * 60 * 1000));
+  let hoursms = ms % (60 * 60 * 1000);
+  let minutes = Math.floor(hoursms / (60 * 1000));
+  let minutesms = ms % (60 * 1000);
+  let sec = Math.floor(minutesms / 1000);
+  let msms = ms % 1000;
   ms = Math.floor(minutesms);
   return `${hours}h ${minutes}m ${sec}s ${msms}`;
 }
