@@ -58,7 +58,7 @@ function timer() {
     minutesNb * 60 * 1000 +
     secondsNb * 1000 +
     millisecondsNb;
-  return `${hoursNb}h ${minutesNb}m ${secondsNb}s ${millisecondsNb}`;
+  return `${hoursNb}h ${minutesNb}m ${secondsNb}s ${millisecondsNb}ms`;
 }
 
 // START CHRONO (START button)
@@ -121,7 +121,7 @@ function dhm(ms) {
   let sec = Math.floor(minutesms / 1000);
   let msms = ms % 1000;
   ms = Math.floor(minutesms);
-  return `${hours}h ${minutes}m ${sec}s ${msms}00ms`;
+  return `${hours}h ${minutes}m ${sec}s ${msms}ms`;
 }
 
 checkpoint.addEventListener("click", () => {
