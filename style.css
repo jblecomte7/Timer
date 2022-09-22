@@ -58,6 +58,10 @@ button {
     color: rgb(82, 82, 82);
 }
 
+#lap {
+    color: #000;
+}
+
 #checkpointLap {
     text-align: center;
     line-height: 2em;
@@ -71,4 +75,8 @@ button {
     background: #fff;
     margin: 10px 0;
     font-size: 0.75em;
+}
+
+h1 {
+    text-align: center;
 }
