@@ -69,6 +69,7 @@ const chronoStart = () => {
 
 startChrono.addEventListener("click", () => {
   chronoStart();
+  startChrono.disabled = true;
 });
 
 // STOP CHRONO (STOP button)
@@ -140,7 +141,7 @@ reinitChrono.addEventListener("click", () => {
   prevTime =
     hoursNb * 60 * 60 * 1000 + minutesNb * 60 * 1000 + secondsNb * 1000;
   nbTour = 1;
-  console.log(dhm(actualTime - prevTime));
+  startChrono.disabled = false;
 });
 
 const remove = () => {
@@ -148,5 +149,7 @@ const remove = () => {
   removeCheckpoints.forEach((line) => {
     line.remove();
   });
-  document.querySelector(".best_lap").remove();
+  if (bestLap) {
+    document.querySelector(".best_lap").remove();
+  }
 };
