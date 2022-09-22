@@ -50,6 +50,7 @@ const addContent = () => {
   addLap.className = "lap";
   addLap.textContent = "Temps écoulé : " + timer();
   checkLap.append(addLap);
+  console.log(addLap.length);
 };
 
 const chronoStart = () => {
@@ -86,6 +87,8 @@ reinitChrono.addEventListener("click", () => {
 });
 
 const remove = () => {
-  const removeCheckpoints = document.querySelector(".lap");
-  removeCheckpoints.remove();
+  const removeCheckpoints = document.querySelectorAll(".lap");
+  removeCheckpoints.forEach((line) => {
+    line.remove();
+  });
 };
