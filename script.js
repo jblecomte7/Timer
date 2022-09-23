@@ -198,7 +198,7 @@ const openSummary = () => {
   <b>Temps total :</b></br> ${timer()}</br>
   <b>Nombre de tours :</b></br> ${nbTour - 1} </br>
   <b>Temps tour moyen :</b></br> ${dhm(actualTime / nbTour)} </br>
-  <b>Meilleur tour :</b></br> ${record.timeLap} (tour ${record.nbLap})`;
+  <b>Meilleur tour :</b></br> ${record.timeLap} (tour n°${record.nbLap})`;
   end.append(showSummary);
 };
 

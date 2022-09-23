@@ -2,7 +2,7 @@ body {
     margin: 0;
     background: rgb(216, 216, 216);
     background-image: url('./images/bg-running.jpg');
-    background-position: bottom;
+    background-position: initial;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
