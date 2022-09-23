@@ -2,10 +2,11 @@ body {
     margin: 0;
     background: rgb(216, 216, 216);
     background-image: url('./images/bg-running.jpg');
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .timer {
@@ -20,16 +21,16 @@ body {
 p {
     background: #fff;
     text-align: center;
-    width: 400px;
-    font-size: 3em;
+    width: 375px;
+    font-size: 2.5em;
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .buttons {
     display: flex;
-    justify-content: space-around;   
+    justify-content: space-around;  
 }
 button {
     border: 1px solid #fff;
@@ -73,7 +74,7 @@ button {
     text-align: center;
     line-height: 2em;
     font-size : 1.25em;
-    width: 400px;
+    width: 375px;
     margin: 0 auto;
 }
 
@@ -84,7 +85,7 @@ button {
     font-size: 0.75em;
 }
 
-h1, h2 {
+h1, h2, h3 {
     text-align: center;
 }
 
@@ -97,6 +98,18 @@ h2 {
 }
 
 .best_lap {
-    background: rgb(32, 95, 32);
-    color:rgb(216, 216, 216);
+    color: rgb(32, 95, 32);
+    background: #fff;
+    border-radius: 10px;
+}
+
+.summary {
+    background-color: #fff;
+    max-width: 500px;
+    border-radius: 10px;
+    top: 200px;
+    left: 25px;
+    z-index: 9;
+    padding: 25px;
+    line-height: 2em;
 }

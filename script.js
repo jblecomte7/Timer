@@ -3,6 +3,8 @@ let minutes = document.querySelector("#min");
 let seconds = document.querySelector("#sec");
 let milliseconds = document.querySelector("#ms");
 
+let end = document.querySelector("#end");
+
 let hoursNb = 0;
 let minutesNb = 0;
 let secondsNb = 0;
@@ -21,10 +23,17 @@ let startChrono = document.querySelector(".start__btn");
 let stopChrono = document.querySelector("#stopBtn");
 let reinitChrono = document.querySelector(".reinit__btn");
 let checkpoint = document.querySelector("#lap");
+let summaryBtn = document.querySelector("#summary");
+
+let record = {
+  nbLap: "",
+  timeLap: "",
+};
 
 reinitChrono.disabled = true;
 stopChrono.disabled = true;
 checkpoint.disabled = true;
+summaryBtn.disabled = true;
 
 // TIMER FUNCTION
 
@@ -79,6 +88,8 @@ startChrono.addEventListener("click", () => {
   startChrono.textContent = "...";
   stopChrono.disabled = false;
   stopChrono.classList.add("stop__btn");
+  stopChrono.textContent = "STOP";
+  removeSummary();
 });
 
 // STOP CHRONO (STOP button)
@@ -90,8 +101,11 @@ const chronoStop = () => {
 stopChrono.addEventListener("click", () => {
   chronoStop();
   reinitChrono.disabled = false;
+  checkpoint.disabled = true;
   startChrono.disabled = false;
   startChrono.textContent = "RESUME";
+  stopChrono.textContent = "...";
+  summaryBtn.disabled = false;
 });
 
 // ADD CHECKPOINTS (LAP button)
@@ -100,16 +114,12 @@ const addContent = () => {
   let addLap = document.createElement("div");
   addLap.className = "lap";
   addLap.innerHTML =
-    "<b>Temps du tour n°" +
-    nbTour +
-    ":</b> " +
-    dhm(actualTime - prevTime) +
-    "</br>" +
-    "<b>Temps total écoulé :</b> " +
-    timer();
+    "<b>Tour n°" + nbTour + ":</b> " + dhm(actualTime - prevTime);
   currentLapTime = actualTime - prevTime;
   if (currentLapTime < bestLap || bestLap === 0) {
     bestLap = currentLapTime;
+    record.nbLap = nbTour;
+    record.timeLap = dhm(bestLap);
     const removeBestLap = document.querySelectorAll(".best_lap");
     removeBestLap.forEach((line) => {
       line.classList.remove("best_lap");
@@ -149,18 +159,27 @@ reinitChrono.addEventListener("click", () => {
   millisecondsNb = 0;
   milliseconds.textContent = millisecondsNb;
 
-  remove();
+  removeStats();
+  removeSummary();
   prevTime =
     hoursNb * 60 * 60 * 1000 + minutesNb * 60 * 1000 + secondsNb * 1000;
+  bestLap = prevTime;
   nbTour = 1;
   startChrono.disabled = false;
   startChrono.textContent = "START";
   stopChrono.disabled = true;
   stopChrono.classList.remove("stop__btn");
   checkpoint.disabled = true;
+  reinitChrono.disabled = true;
+  summaryBtn.disabled = true;
 });
 
-const remove = () => {
+const removeSummary = () => {
+  const removeSumBlock = document.querySelector(".summary");
+  removeSumBlock.remove();
+};
+
+const removeStats = () => {
   const removeCheckpoints = document.querySelectorAll(".lap");
   removeCheckpoints.forEach((line) => {
     line.remove();
@@ -169,3 +188,21 @@ const remove = () => {
     document.querySelector(".best_lap").remove();
   }
 };
+
+// SUMMARY (Summary btn)
+
+const openSummary = () => {
+  let showSummary = document.createElement("div");
+  showSummary.classList.add("summary");
+  showSummary.innerHTML = `<h3>Bilan de la session</h3></br>
+  <b>Temps total :</b></br> ${timer()}</br>
+  <b>Nombre de tours :</b></br> ${nbTour - 1} </br>
+  <b>Temps tour moyen :</b></br> ${dhm(actualTime / nbTour)} </br>
+  <b>Meilleur tour :</b></br> ${record.timeLap} (tour ${record.nbLap})`;
+  end.append(showSummary);
+};
+
+summaryBtn.addEventListener("click", () => {
+  openSummary();
+  summaryBtn.disabled = true;
+});
